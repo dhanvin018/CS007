@@ -1,20 +1,16 @@
-int findDuplicate(int* nums, int numsSize){
-int slow = 0;
-int fast = 0;
-/*if(numsSize==2){
-    return *nums;
-}*/
+int findDuplicate(int* nums, int numsSize) {
+    int slow = nums[0];
+    int fast = nums[0];
+    do {
+        slow = nums[slow];
+        fast = nums[nums[fast]];
+    } while (slow != fast);
 
-do{
-    slow = *(nums+slow);
-    fast = *(nums+*(nums+fast));
-}while(slow != fast);
+    fast = nums[0];
+    while (slow != fast) {
+        slow = nums[slow];
+        fast = nums[fast];
+    }
 
-fast = 0;
-do{
-    slow = *(nums+slow);
-    fast = *((nums+fast));
-}while(slow != fast);
-
-return slow;
+    return slow;
 }
