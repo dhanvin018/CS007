@@ -1,14 +1,8 @@
-int missingNumber(int* nums, int numsSize){
-    int s=0;
-    
-    for(int i =0; i<numsSize; i++){
-        
-        s = s + *(nums+i);
-        
+int missingNumber(int* nums, int numsSize) {
+    int expected_sum = numsSize * (numsSize + 1) / 2;
+    int actual_sum = 0;
+    for (int i = 0; i < numsSize; i++) {
+        actual_sum += nums[i];
     }
-
-    s = (numsSize*(numsSize+1)/2) -s;
-    
-    return s;
+    return expected_sum - actual_sum;
 }
-
